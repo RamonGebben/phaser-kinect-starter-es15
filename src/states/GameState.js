@@ -2,6 +2,7 @@ export default class GameState extends Phaser.State {
 	
 	constructor() {
 		super();
+		this.canvas = document.getElementsByTagName('canvas');
 	}
 	
 	preload() {
@@ -9,12 +10,13 @@ export default class GameState extends Phaser.State {
 	}
 	
 	create() {
-		this.sprite = this.game.add.sprite(370, 370, 'phaser');
+		this.sprite = this.game.add.sprite(window.innerWidth/2, window.innerHeight/2, 'phaser');
 		this.sprite.anchor.setTo(0.5, 0.5);
+		console.log(this.sprite);
 	}
 	
 	update() {
-		this.sprite.rotation += .02;
+		this.sprite.rotation += .01;
 		console.log('some stupid animation that shows it works');
 	}
 	
