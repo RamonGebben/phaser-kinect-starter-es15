@@ -10,6 +10,7 @@ import exorcist from 'exorcist';
 import babelify from 'babelify';
 import browserify from 'browserify';
 import browserSync from 'browser-sync';
+import taskListing from 'gulp-task-listing';
 
 /**
  * Using different folders/file names? Change these constants:
@@ -21,6 +22,8 @@ const SOURCE_PATH = './src';
 const STATIC_PATH = './static';
 const ENTRY_FILE = SOURCE_PATH + '/index.js';
 const OUTPUT_FILE = 'game.js';
+
+gulp.task('help', taskListing);
 
 let keepFiles = false;
 
