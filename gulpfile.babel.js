@@ -1,28 +1,28 @@
-var del = require('del');
-var gulp = require('gulp');
-var argv = require('yargs').argv;
-var gutil = require('gulp-util');
-var source = require('vinyl-source-stream');
-var buffer = require('gulp-buffer');
-var uglify = require('gulp-uglify');
-var gulpif = require('gulp-if');
-var exorcist = require('exorcist');
-var babelify = require('babelify');
-var browserify = require('browserify');
-var browserSync = require('browser-sync');
+import del from 'del';
+import gulp from 'gulp';
+import argv from 'yargs';
+import gutil from 'gulp-util';
+import source from 'vinyl-source-stream';
+import buffer from 'gulp-buffer';
+import uglify from 'gulp-uglify';
+import gulpif from 'gulp-if';
+import exorcist from 'exorcist';
+import babelify from 'babelify';
+import browserify from 'browserify';
+import browserSync from 'browser-sync';
 
 /**
  * Using different folders/file names? Change these constants:
  */
-var PHASER_PATH = './node_modules/phaser/build/';
-var BUILD_PATH = './build';
-var SCRIPTS_PATH = BUILD_PATH + '/scripts';
-var SOURCE_PATH = './src';
-var STATIC_PATH = './static';
-var ENTRY_FILE = SOURCE_PATH + '/index.js';
-var OUTPUT_FILE = 'game.js';
+const PHASER_PATH = './node_modules/phaser/build/';
+const BUILD_PATH = './build';
+const SCRIPTS_PATH = BUILD_PATH + '/scripts';
+const SOURCE_PATH = './src';
+const STATIC_PATH = './static';
+const ENTRY_FILE = SOURCE_PATH + '/index.js';
+const OUTPUT_FILE = 'game.js';
 
-var keepFiles = false;
+let keepFiles = false;
 
 /**
  * Simple way to check for development/production mode.
@@ -143,7 +143,6 @@ function serve() {
     });
 
 }
-
 
 gulp.task('cleanBuild', cleanBuild);
 gulp.task('copyStatic', ['cleanBuild'], copyStatic);
