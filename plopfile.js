@@ -1,6 +1,6 @@
 module.exports = function (plop) {
-    plop.setGenerator('test', {
-        description: 'this is a test',
+    plop.setGenerator('component', {
+        description: 'component template',
         prompts: [{
             type: 'input',
             name: 'name',
@@ -12,8 +12,8 @@ module.exports = function (plop) {
         }],
         actions: [{
             type: 'add',
-            path: 'folder/{{dashCase name}}.txt',
-            templateFile: 'templates/temp.txt'
+            path: 'src/components/{{dashCase name}}.js',
+            templateFile: 'generators/component.template'
         }]
     });
 };

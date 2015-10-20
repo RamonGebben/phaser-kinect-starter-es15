@@ -1,0 +1,7 @@
+export default class {{ properCase name }} extends Phaser.Graphic {
+
+	constructor() {
+		
+	}
+
+}
