@@ -1,0 +1,20 @@
+export default class {{ properCase name }} extends Phaser.State {
+	
+	constructor() {
+		super();
+		this.canvas = document.getElementsByTagName('canvas');
+	}
+	
+	preload() {
+		
+	}
+	
+	create() {
+		
+	}
+	
+	update() {
+		
+	}
+	
+}
