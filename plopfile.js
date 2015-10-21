@@ -1,4 +1,5 @@
 module.exports = function (plop) {
+    
     plop.setGenerator('component', {
         description: 'component template',
         prompts: [{
@@ -12,8 +13,8 @@ module.exports = function (plop) {
         }],
         actions: [{
             type: 'add',
-            path: 'src/components/{{dashCase name}}.js',
-            templateFile: 'generators/component.template'
+            path: 'src/components/{{properCase name}}.js',
+            templateFile: 'scaffolds/component.template'
         }]
     });
     
@@ -30,8 +31,9 @@ module.exports = function (plop) {
         }],
         actions: [{
             type: 'add',
-            path: 'src/states/{{dashCase name}}.js',
-            templateFile: 'generators/state.template'
+            path: 'src/states/{{properCase name}}.js',
+            templateFile: 'scaffolds/state.template'
         }]
     });
+    
 };

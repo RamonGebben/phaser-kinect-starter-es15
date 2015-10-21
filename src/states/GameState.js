@@ -12,7 +12,6 @@ export default class GameState extends Phaser.State {
 	create() {
 		this.sprite = this.game.add.sprite(window.innerWidth/2, window.innerHeight/2, 'phaser');
 		this.sprite.anchor.setTo(0.5, 0.5);
-		console.log(this.sprite);
 	}
 	
 	update() {
