@@ -1,4 +1,4 @@
-export default class GameState extends Phaser.State {
+export default class Start extends Phaser.State {
 	
 	constructor() {
 		super();
@@ -12,11 +12,11 @@ export default class GameState extends Phaser.State {
 	create() {
 		this.sprite = this.game.add.sprite(window.innerWidth/2, window.innerHeight/2, 'phaser');
 		this.sprite.anchor.setTo(0.5, 0.5);
+		console.log('State Start');
 	}
 	
 	update() {
 		this.sprite.rotation += .01;
-		console.log('some stupid animation that shows it works');
 	}
 	
 }
