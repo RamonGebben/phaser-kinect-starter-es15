@@ -8,11 +8,11 @@ export default class Start extends Phaser.State {
 	constructor() {
 		super();
 		this.canvas = document.getElementsByTagName('canvas');
-		document.addEventListener('click', this.stateHandler.bind(this), false);
+		document.addEventListener('click', this.stateHandler.bind(this), false);		
 	}
 	
 	preload() {
-		this.game.load.image('phaser', 'assets/preload.png');
+		this.game.load.image(this.key, 'assets/preload.png');
 	}
 	
 	stateHandler(ev) {
@@ -32,9 +32,9 @@ export default class Start extends Phaser.State {
 	}
 	
 	create() {
-		this.sprite = this.game.add.sprite(window.innerWidth/2, window.innerHeight/2, 'phaser');
+		this.sprite = this.game.add.sprite(this.world.centerX, this.world.centerY, this.key);
 		this.sprite.anchor.setTo(0.5, 0.5);
-		console.log('State Start');
+		console.log('State', this.key);
 	}
 	
 	update() {
