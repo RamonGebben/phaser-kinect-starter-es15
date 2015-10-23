@@ -15,7 +15,7 @@ class Game extends Phaser.Game {
 		this.state.add('Start',Start, false);
 		this.state.add('Editor', Editor, false);
 		this.state.add('Orbit', Orbit, false);
-		this.state.start('Preload');
+		this.state.start('Orbit');
 		// this._bindSocket();
 	}
 }
