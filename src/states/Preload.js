@@ -1,10 +1,11 @@
-import Base from './Base';
+import Connection from '../Connection.js';
 
-export default class Preload extends Base {
+export default class Preload extends Phaser.State {
 
 	constructor() {
 		super();
 		this.emitter = null;
+		this.connection = Connection;
 	}
 
 	preload() {

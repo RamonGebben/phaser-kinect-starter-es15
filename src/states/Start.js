@@ -1,7 +1,7 @@
 import Preload from './Preload.js';
-import Base from './Base';
+import Connection from '../Connection.js';
 
-export default class Start extends Base {
+export default class Start extends Phaser.State {
 
 	constructor() {
 		super();
@@ -9,6 +9,7 @@ export default class Start extends Base {
 		this.pausedSprite = null;
 		this.button;
 		this.background;
+		this.connection = Connection;
 	}
 
 	onBodyData(data){
@@ -23,7 +24,6 @@ export default class Start extends Base {
 	}
 
 	create() {
-		console.log(this.websocket)
 	    this.game.stage.backgroundColor = '#182d3b';
 	    this.background = this.game.add.sprite(0, 0, 'background');
 		this.background.height = this.game.height;

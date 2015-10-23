@@ -1,6 +1,6 @@
-import Base from './Base';
+import Connection from '../Connection.js';
 
-export default class Editor extends Base {
+export default class Editor extends Phaser.State {
 
 	constructor() {
 		super();
@@ -26,6 +26,7 @@ export default class Editor extends Base {
 				image: 'assets/parts/jet_1.png'
 			}
 		]
+		this.connection = Connection;
 	}
 
 	onBodyData(data){

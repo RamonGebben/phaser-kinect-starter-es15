@@ -1,6 +1,4 @@
-import Base from './Base';
-
-export default class Menu extends Base {
+export default class Menu extends Phaser.State {
 
 	constructor() {
 		super();

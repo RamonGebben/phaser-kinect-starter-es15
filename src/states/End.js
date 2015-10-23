@@ -1,6 +1,4 @@
-import Base from './Base';
-
-export default class End extends Base {
+export default class End extends Phaser.State {
 
 	constructor() {
 		super();
