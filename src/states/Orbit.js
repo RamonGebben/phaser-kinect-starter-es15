@@ -72,7 +72,7 @@ export default class Orbit extends Phaser.State {
 	}
 	
 	render() {
-    	this.game.debug.bodyInfo(this.sprite, 32, 32);
+    	
 	}
 
 	update() {
