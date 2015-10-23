@@ -68,7 +68,6 @@ export default class Orbit extends Phaser.State {
 		this.sprite.body.collideWorldBounds = true;
 		this.sprite.body.bounce.set(.1);
     	this.game.input.onDown.add(this.launchRocket, this);
-	
 	}
 
 	update() {
