@@ -85,6 +85,9 @@ export default class Orbit extends Phaser.State {
 			if (this.game.height - this.sprite.body.y === 60 || this.sprite.body.y === 0) {
 				this.sprite.destroy();
 			}
+			if(this.game.height - 150 <= this.sprite.position.y && this.game.width - 150 <= this.sprite.position.x) {
+				alert('You won the game!!! Now go away');
+			}
 			
 		}		
 	}
