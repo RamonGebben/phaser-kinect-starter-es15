@@ -2,6 +2,7 @@ export default class Editor extends Phaser.State {
 
 	constructor() {
 		super();
+		this.button;
 		this.parts = [
 			{
 				title: 'head',
@@ -26,7 +27,8 @@ export default class Editor extends Phaser.State {
 		]
 
 		this.shizzle = {
-			parts : {}
+			parts : {},
+			validatedItems: []
 		}
 	}
 
@@ -37,6 +39,7 @@ export default class Editor extends Phaser.State {
 		});
 
 		this.game.load.image('outline','assets/outline-rocket.png');
+		this.game.load.spritesheet('launch_button', 'assets/launch_button_sprite_sheet.png', 193, 71);
 		this.game.load.image('Space', 'assets/bg.png');
 	}
 
@@ -75,6 +78,16 @@ export default class Editor extends Phaser.State {
 				sprite.position.setTo(posX, posY);
 				break;
 		}
+
+
+		this.shizzle.validatedItems.push(sprite.key);
+		this.validateItems();
+	}
+
+	validateItems(){
+		if(this.shizzle.validatedItems.length === 4){
+			this.addLaunchButton();
+		}
 	}
 
 	create() {
@@ -110,15 +123,38 @@ export default class Editor extends Phaser.State {
 		this.shizzle.outline.anchor.set(0.5, 0);
 
 
-		var marker;
-		marker = this.game.add.graphics();
-		marker.lineStyle(2, 0x00FF00, 1);
+		const marker = this.game.add.graphics();
+		marker.lineStyle(2, null, 1);
 		marker.drawRect(this.game.world.centerX + 300, 0, 170, 200);
 		marker.drawRect(this.game.world.centerX + 470, 0, 160, 200);
 		marker.drawRect(this.game.world.centerX + 300, 200, 330, 500);
 		marker.drawRect(this.game.world.centerX + 300, 700, 330, 250);
-
 		this.attachEvents();
+	}
+
+
+	actionOnClick(){
+		this.state.start('Orbit');
+	}
+
+	addLaunchButton(){
+		console.log(this.game.world);
+		this.button = this.game.add.button(this.game.world.centerX - 600, 50, 'launch_button', this.actionOnClick, this, 2, 1, 0);
+	    this.button.onInputOver.add(this.over, this);
+	    this.button.onInputOut.add(this.out, this);
+	    this.button.onInputUp.add(this.up, this);
+	}
+
+	up() {
+		console.log('button up', arguments);
+	}
+
+	over() {
+		console.log('button over');
+	}
+
+	out() {
+		console.log('button out');
 	}
 
 	update() {
