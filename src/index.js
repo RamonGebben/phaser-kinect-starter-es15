@@ -1,8 +1,8 @@
 import Preload from './states/Preload';
 import Menu from './states/Menu';
 import Start from './states/Start';
-import Editor from './states/Editor';
 import Orbit from './states/Orbit';
+import Editor from './states/Editor';
 import End from './states/End';
 
 class Game extends Phaser.Game {
@@ -15,7 +15,7 @@ class Game extends Phaser.Game {
 		this.state.add('Start',Start, false);
 		this.state.add('Editor', Editor, false);
 		this.state.add('Orbit', Orbit, false);
-		this.state.start('Orbit');
+		this.state.start('Preload');
 		// this._bindSocket();
 	}
 }
