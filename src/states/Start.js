@@ -6,6 +6,7 @@ export default class Start extends Phaser.State {
 		super();
 		this.canvas = document.getElementsByTagName('canvas'); 
 		this.sprite = null;
+		this.pausedSprite = null;
 		document.addEventListener('click', this.stateHandler.bind(this));
 	}
 	
@@ -15,23 +16,23 @@ export default class Start extends Phaser.State {
 	}
 	
 	stateHandler(ev) {
-		if (this.game.paused) {
-			this.resumed();
-		} else {
-			this.paused();
-		} 
+		this.game.paused ? this.resumed() : this.paused();  
+		this.game.paused = !this.game.paused;
 	}
 	
 	paused() {
-		this.game.paused = true;
+		this.pausedSprite = this.make.sprite(0, 0, 'paused'); 
+		this.stage.addChild(this.pausedSprite);
 	}
 	
 	resumed() {
-		this.game.paused = false;
+		// Hack for removing pause for now.
+		// TODO: solved by adding paused image with valid key and remove proper item from array
+		this.stage.stage.children.pop();
 	}
 		
 	create() {
-		 
+
 		let space = this.game.add.sprite(0, 0, 'Space');
 			 
 		space.height = this.game.height;
