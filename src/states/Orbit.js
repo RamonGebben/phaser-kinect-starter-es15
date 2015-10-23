@@ -10,6 +10,7 @@ export default class Orbit extends Phaser.State {
 		this.velocityY = -200;
 		this.gravity = 50;
 		this.launched = false;
+		this.count = 0;
 		this.trail = '#D3D3D3';
 		this.launchedPlanet = null;
 		this.targetPlanet = null;
@@ -25,20 +26,22 @@ export default class Orbit extends Phaser.State {
 		this.launchPlanet = this.game.add.graphics(0, 0);
 		this.targetPlanet = this.game.add.graphics(0, 0);
 
-		this.launchPlanet.beginFill(0xFFFF0B, 1);
-		this.launchPlanet.drawCircle(window.innerWidth, window.innerHeight, 300);
-		this.launchPlanet.endFill();
-
-		this.targetPlanet.beginFill(0xffffff, 1);
-		this.targetPlanet.drawCircle(0, window.innerHeight, 300);
+		this.targetPlanet.beginFill(0xFFFF0B, 1);
+		this.targetPlanet.drawCircle(window.innerWidth, window.innerHeight, 300);
 		this.targetPlanet.endFill();
+
+		this.launchPlanet.beginFill(0xffffff, 1);
+		this.launchPlanet.drawCircle(0, window.innerHeight, 300);
+		this.launchPlanet.endFill();
 	}
 	
 	launchRocket() {
-		if(!this.launched) {
+		if (this.count < 2) {
 			this.sprite.body.velocity.setTo(this.velocityX, this.velocityY);
 			this.launched = true;
+			console.log('i ran', this.count);
 		}
+		this.count++;
 	}
 
 	setBackground() {
