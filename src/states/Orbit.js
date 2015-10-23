@@ -18,6 +18,7 @@ export default class Orbit extends Phaser.State {
 	preload() {
     	this.game.load.image('rocket', 'assets/rocket.png');
 		this.game.load.image('explosion', 'assets/explosion.png');
+		this.game.load.image('Space', 'assets/bg.png');
 	}
 	
 	createPlanets() {
@@ -37,7 +38,7 @@ export default class Orbit extends Phaser.State {
 		if(!this.launched) {
 			this.sprite.body.velocity.setTo(this.velocityX, this.velocityY);
 			this.launched = true;
-		}				    
+		}
 	}
 
 	setBackground() {
@@ -69,15 +70,17 @@ export default class Orbit extends Phaser.State {
 		this.sprite.body.bounce.set(.1);
     	this.game.input.onDown.add(this.launchRocket, this);
 	}
-
-	update() {
-		this.sprite.rotation = this.sprite.body.angle;
-		this.rocketPath.context.fillRect(this.sprite.x, this.sprite.y, 2, 2);
-		this.rocketPath.dirty = true;
-	}
 	
 	render() {
     	this.game.debug.bodyInfo(this.sprite, 32, 32);
 		// Phaser.Physics.Arcade.collide(enemiesGroup, this.rocket);
 	}
+
+	update() {
+		this.sprite.rotation = this.sprite.body.angle;
+		this.rocketPath.context.fillRect(this.sprite.x, this.sprite.y, 2, 2);
+		this.rocketPath.dirty = true;
+		// this.game.physics.arcade.collide(this.sprite.player.body, this.targetPlanet);
+	}
+	
 }
