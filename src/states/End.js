@@ -1,19 +1,21 @@
-export default class End extends Phaser.State {
-	
+import Base from './Base';
+
+export default class End extends Base {
+
 	constructor() {
 		super();
 	}
-	
+
 	preload() {
-		
+
 	}
-	
+
 	create() {
-		
+
 	}
-	
+
 	update() {
-		
+
 	}
-	
+
 }

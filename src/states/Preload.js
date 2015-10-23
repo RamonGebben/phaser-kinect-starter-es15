@@ -1,4 +1,6 @@
-export default class Preload extends Phaser.State {
+import Base from './Base';
+
+export default class Preload extends Base {
 
 	constructor() {
 		super();
@@ -16,6 +18,11 @@ export default class Preload extends Phaser.State {
 
 	loadUpdate () {
 		console.log('loading preload');
+	}
+
+	onBodyData(data){
+		// Interact here with data bodies;
+		console.log('From Preload', data);
 	}
 
 	create() {

@@ -1,4 +1,6 @@
-export default class Editor extends Phaser.State {
+import Base from './Base';
+
+export default class Editor extends Base {
 
 	constructor() {
 		super();
@@ -16,7 +18,7 @@ export default class Editor extends Phaser.State {
 			{
 				title: 'stablizers',
 				type: 'stablizers',
-				image: 'assets/parts/stablizers_1.png'
+				image: 'assets/parts/stabilizers_1.png'
 			},
 			{
 				title: 'jet',
@@ -24,6 +26,11 @@ export default class Editor extends Phaser.State {
 				image: 'assets/parts/jet_1.png'
 			}
 		]
+	}
+
+	onBodyData(data){
+		// Interact here with data bodies;
+		console.log('From Editor', data);
 	}
 
 	preload() {

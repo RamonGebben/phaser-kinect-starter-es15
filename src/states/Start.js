@@ -1,6 +1,7 @@
 import Preload from './Preload.js';
+import Base from './Base';
 
-export default class Start extends Phaser.State {
+export default class Start extends Base {
 
 	constructor() {
 		super();
@@ -10,6 +11,11 @@ export default class Start extends Phaser.State {
 		this.background;
 	}
 
+	onBodyData(data){
+		// Interact here with data bodies;
+		console.log('From Start', data);
+	}
+
 	preload() {
 	    this.game.load.spritesheet('button', 'assets/button_sprite_sheet.png', 193, 71);
 	    this.game.load.image('background','assets/bg.png');
@@ -17,6 +23,7 @@ export default class Start extends Phaser.State {
 	}
 
 	create() {
+		console.log(this.websocket)
 	    this.game.stage.backgroundColor = '#182d3b';
 	    this.background = this.game.add.sprite(0, 0, 'background');
 		this.background.height = this.game.height;
