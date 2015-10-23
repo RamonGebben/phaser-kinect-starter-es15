@@ -22,7 +22,7 @@ export default class Orbit extends Phaser.State {
 	}
 	
 	createPlanets() {
-		this.launchPlanet = this.game.add.graphics(0, 0),
+		this.launchPlanet = this.game.add.graphics(0, 0);
 		this.targetPlanet = this.game.add.graphics(0, 0);
 
 		this.launchPlanet.beginFill(0xFFFF0B, 1);
@@ -73,14 +73,16 @@ export default class Orbit extends Phaser.State {
 	
 	render() {
     	this.game.debug.bodyInfo(this.sprite, 32, 32);
-		// Phaser.Physics.Arcade.collide(enemiesGroup, this.rocket);
 	}
 
 	update() {
 		this.sprite.rotation = this.sprite.body.angle;
 		this.rocketPath.context.fillRect(this.sprite.x, this.sprite.y, 2, 2);
 		this.rocketPath.dirty = true;
-		// this.game.physics.arcade.collide(this.sprite.player.body, this.targetPlanet);
+		if (this.launched) {
+			if (this.game.height - this.sprite.body.y === 60 || this.sprite.body.y === 0) {
+				this.sprite.destroy();
+			}
+		}		
 	}
-	
 }
