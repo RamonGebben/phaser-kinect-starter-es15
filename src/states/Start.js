@@ -1,61 +1,45 @@
 import Preload from './Preload.js';
 
 export default class Start extends Phaser.State {
-	
+
 	constructor() {
 		super();
-		this.canvas = document.getElementsByTagName('canvas'); 
 		this.sprite = null;
 		this.pausedSprite = null;
-		document.addEventListener('click', this.stateHandler.bind(this));
+		this.button;
+		this.background;
 	}
-	
-	preload() {
-		this.game.load.image(this.key, 'assets/preload.png');
-		this.game.load.image('Space', 'assets/bg.png');
-	}
-	
-	stateHandler(ev) {
-		this.game.paused ? this.resumed() : this.paused();  
-		this.game.paused = !this.game.paused;
-	}
-	
-	paused() {
-		this.pausedSprite = this.make.sprite(0, 0, 'paused'); 
-		this.stage.addChild(this.pausedSprite);
-	}
-	
-	resumed() {
-		// Hack for removing pause for now.
-		// TODO: solved by adding paused image with valid key and remove proper item from array
-		this.stage.stage.children.pop();
-	}
-		
-	create() {
 
-		let space = this.game.add.sprite(0, 0, 'Space');
-			 
-		space.height = this.game.height;
-		space.width = this.game.width;
-		 
-		this.sprite = this.game.add.sprite(this.world.centerX, this.world.centerY, this.key);		
-		this.sprite.anchor.setTo(0.5, 0.5);
-		this.sprite.anchor.set(0.5);
-		this.game.add.tween(this.sprite.scale).to( { x: 0.2, y: 0.2 }, 2000, "Sine.easeInOut", true, 500, -1, true );
-		
-		console.log('State', this.key);
+	preload() {
+	    this.game.load.spritesheet('button', 'assets/button_sprite_sheet.png', 193, 71);
+	    this.game.load.image('background','assets/bg.png');
+
 	}
-	
-	preRender() {
-		
+
+	create() {
+	    this.game.stage.backgroundColor = '#182d3b';
+	    this.background = this.game.add.sprite(0, 0, 'background');
+		this.background.height = this.game.height;
+		this.background.width = this.game.width;
+	    this.button = this.game.add.button(this.game.world.centerX - 95, 400, 'button', this.actionOnClick, this, 2, 1, 0);
+	    this.button.onInputOver.add(this.over, this);
+	    this.button.onInputOut.add(this.out, this);
+	    this.button.onInputUp.add(this.up, this);
 	}
-	
-	render() {
-		console.log('do something in render if u want');
+
+	up() {
+	    console.log('button up', arguments);
 	}
-	
-	update() {
-		this.sprite.rotation += .01;
+
+	over() {
+	    console.log('button over');
 	}
-	
+
+	out() {
+	    console.log('button out');
+	}
+
+	actionOnClick () {
+	    this.background.visible =! this.background.visible;
+	}
 }
