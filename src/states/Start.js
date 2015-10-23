@@ -6,6 +6,7 @@ export default class Start extends Phaser.State {
 		super();
 		this.sprite = null;
 		this.pausedSprite = null;
+		this.planet;
 		document.addEventListener('click', this.stateHandler.bind(this));
 	}
 	
@@ -31,16 +32,13 @@ export default class Start extends Phaser.State {
 	}
 		
 	create() {
-
 		let space = this.game.add.sprite(0, 0, 'Space');
 		space.height = this.game.height;
 		space.width = this.game.width;
-
+		
 		this.sprite = this.game.add.sprite(this.world.centerX, this.world.centerY, this.key);		
 		this.sprite.anchor.setTo(0.5, 0.5);
-		this.game.add.tween(this.sprite.scale).to( { x: 0.2, y: 0.2 }, 2000, "Sine.easeInOut", true, 500, -1, true );
-		
-		console.log('State', this.key);
+		this.game.add.tween(this.sprite.scale).to( { x: 0.2, y: 0.2 }, 2000, "Sine.easeInOut", true, 500, -1, true );		
 	}
 	
 	preRender() {
