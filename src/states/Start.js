@@ -13,7 +13,7 @@ export default class Start extends Base {
 
 	onBodyData(data){
 		// Interact here with data bodies;
-		console.log('From Start', data);
+		// console.log('From Start', data);
 	}
 
 	preload() {

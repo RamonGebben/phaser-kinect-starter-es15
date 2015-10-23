@@ -8,7 +8,7 @@ export default class Menu extends Base {
 
 	onBodyData(data){
 		// Interact here with data bodies;
-		console.log('From Menu', data);
+		// console.log('From Menu', data);
 	}
 
 	preload() {

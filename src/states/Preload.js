@@ -22,7 +22,7 @@ export default class Preload extends Base {
 
 	onBodyData(data){
 		// Interact here with data bodies;
-		console.log('From Preload', data);
+		// console.log('From Preload', data);
 	}
 
 	create() {

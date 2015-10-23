@@ -28,7 +28,7 @@ export default class Base extends Phaser.State {
     }
 
 	onBodyData(data){
-		console.log('no onBodyData function configures', data);
+		console.log('no onBodyData function configured', data);
 	}
 
 	preload() {

@@ -30,7 +30,7 @@ export default class Editor extends Base {
 
 	onBodyData(data){
 		// Interact here with data bodies;
-		console.log('From Editor', data);
+		// console.log('From Editor', data);
 	}
 
 	preload() {
