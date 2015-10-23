@@ -76,7 +76,25 @@ export default class Orbit extends Phaser.State {
 	render() {
     	
 	}
-
+	
+	showModal(){
+		let modal = document.createElement('div');
+		modal.classList.add('modal');
+		modal.style.backgroundColor = '#fff';
+		modal.style.borderRadius = '4px';
+		modal.style.position = 'fixed';
+		modal.style.top = '20px';
+		modal.style.left = '20px';
+		modal.style.right = '20px';
+		modal.style.bottom = '20px';
+		modal.style.display = 'flex';
+		modal.style.justifyContent = 'space-around';
+		modal.style.alignItems = 'center';
+		modal.innerHTML = '<h1 style="text-align: center;">You won the game!!! Now go away</h1>';
+		document.body.appendChild(modal);	
+	}
+	
+	
 	update() {
 		// this.sprite.rotation = this.sprite.body.angle;
 		this.rocketPath.context.fillRect(this.sprite.x, this.sprite.y, 2, 2);
@@ -86,7 +104,8 @@ export default class Orbit extends Phaser.State {
 				this.sprite.destroy();
 			}
 			if(this.game.height - 150 <= this.sprite.position.y && this.game.width - 150 <= this.sprite.position.x) {
-				alert('You won the game!!! Now go away');
+				// alert('You won the game!!! Now go away');
+				this.showModal();
 			}
 			
 		}		
