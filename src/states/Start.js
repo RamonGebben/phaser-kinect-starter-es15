@@ -17,9 +17,9 @@ export default class Start extends Phaser.State {
 	
 	stateHandler(ev) {
 		if (this.game.paused) {
-			this.resumed()
+			this.resumed();
 		} else {
-			this.paused()
+			this.paused();
 		} 
 	}
 	
