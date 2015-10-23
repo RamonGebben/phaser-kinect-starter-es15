@@ -78,21 +78,13 @@ export default class Orbit extends Phaser.State {
 	}
 
 	update() {
-		this.sprite.rotation = this.sprite.body.angle;
+		// this.sprite.rotation = this.sprite.body.angle;
 		this.rocketPath.context.fillRect(this.sprite.x, this.sprite.y, 2, 2);
 		this.rocketPath.dirty = true;
 		if (this.launched) {
-			if (this.sprite.body ) {
-				if ((this.game.height - 400) === this.sprite.body.position.y && (this.game.width - 400) === this.sprite.body.position.x) {
-					alert('yaaaaaay you won, jow!!! Thank you for playing');	
-				}
-			}
-
 			if (this.game.height - this.sprite.body.y === 60 || this.sprite.body.y === 0) {
 				this.sprite.destroy();
 			}
-			
-			console.log(this.sprite.body);
 			
 		}		
 	}
