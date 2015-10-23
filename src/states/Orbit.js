@@ -36,10 +36,9 @@ export default class Orbit extends Phaser.State {
 	}
 	
 	launchRocket() {
-		if (this.count < 3) {
+		if (this.count < 2) {
 			this.sprite.body.velocity.setTo(this.velocityX, this.velocityY);
 			this.launched = true;
-			console.log('i ran', this.count);
 		}
 		this.count++;
 	}
