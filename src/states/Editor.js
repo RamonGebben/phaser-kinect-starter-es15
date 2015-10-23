@@ -4,7 +4,7 @@ export default class Editor extends Phaser.State {
 		super();
 		this.parts = [
 			{
-				title: 'head',
+				title: 'Red ball',
 				type: 'head',
 				image: 'assets/parts/head_1.png'
 			},
@@ -16,7 +16,7 @@ export default class Editor extends Phaser.State {
 			{
 				title: 'stablizers',
 				type: 'stablizers',
-				image: 'assets/parts/stablizers_1.png'
+				image: 'assets/parts/stabilizers_1.png'
 			},
 			{
 				title: 'jet',
@@ -27,14 +27,30 @@ export default class Editor extends Phaser.State {
 	}
 
 	preload() {
+
+
 		this.parts.forEach((part) => {
-			this.game.load.image(part.title, part.image );
+			console.log(part)
+			this.game.load.image(part.title, part.image);
 		});
+
+
 		this.game.load.image('Space', 'assets/bg.png');
 	}
 
 	create() {
-	console.log('im on editor');
+		//sprites
+		console.log('im on editor');
+		let background = this.game.add.sprite(0,0, 'Space');
+		background.width = this.game.width;
+		background.height = this.game.height;
+
+		this.parts.forEach((part) => {
+			var x = Math.floor(Math.random(2,10)*5);
+			console.log(x);
+			this.game.add.sprite(x*200,x*80, part.title, part.image);
+		});
+
 	}
 
 	update() {
