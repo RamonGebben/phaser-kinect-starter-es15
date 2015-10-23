@@ -34,7 +34,7 @@ export default class Editor extends Phaser.State {
 			this.game.load.image(part.title, part.image);
 		});
 
-
+		this.game.load.image('outline','assets/outline-rocket.png');
 		this.game.load.image('Space', 'assets/bg.png');
 	}
 
@@ -51,6 +51,7 @@ export default class Editor extends Phaser.State {
 			this.game.add.sprite(x*200,x*80, part.title, part.image);
 		});
 
+		this.game.add.sprite(this.game.world.centerX - 200, this.game.world.centerY - 300, 'outline');
 	}
 
 	update() {
