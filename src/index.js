@@ -2,6 +2,7 @@ import Preload from './states/Preload';
 import Menu from './states/Menu';
 import Start from './states/Start';
 import End from './states/End';
+import Editor from './states/Editor';
 
 class Game extends Phaser.Game {
 	constructor() {
@@ -10,6 +11,7 @@ class Game extends Phaser.Game {
 		this.state.add('Menu', Menu, false);
 		this.state.add('End', End, false);
 		this.state.add('Start',Start, false);
+		this.state.add('Editor',Editor, false);
 		this.state.start('Preload');
 	}
 }

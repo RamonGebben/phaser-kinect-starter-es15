@@ -40,6 +40,7 @@ export default class Start extends Phaser.State {
 	}
 
 	actionOnClick () {
-	    this.background.visible =! this.background.visible;
+		this.state.start('Editor');
+	    //this.background.visible =! this.background.visible;
 	}
 }
