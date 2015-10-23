@@ -1,8 +1,3 @@
-// possible states
-// init
-// preload loadUpdate loadRender create update preRender render
-// resize paused resumed pauseUpdate shutdown
-
 import Preload from './Preload.js';
 
 export default class Start extends Phaser.State {
@@ -36,7 +31,12 @@ export default class Start extends Phaser.State {
 	}
 		
 	create() {
-		 //  Create 10 'frames'
+		 
+		let space = this.game.add.sprite(0, 0, 'Space');
+			 
+		space.height = this.game.height;
+		space.width = this.game.width;
+		 
 		this.sprite = this.game.add.sprite(this.world.centerX, this.world.centerY, this.key);		
 		this.sprite.anchor.setTo(0.5, 0.5);
 		this.sprite.anchor.set(0.5);
