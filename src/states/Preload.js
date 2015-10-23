@@ -8,16 +8,12 @@ export default class Preload extends Phaser.State {
 	preload() {	
 		this.game.load.image('Rocket', 'assets/rocket.png');
 		this.game.load.image('Space', 'assets/bg.png');
-
+		
 		setTimeout(() => {
-			this.state.start('Start');
-		}, 4000);
+			this.state.start('Orbit');
+		}, 1000);
 	}
-	
-	loadUpdate () {
-		console.log('loading preload');
-	}
-	
+		
 	create() {
 		
 		let rocket = this.emitter,
@@ -34,9 +30,7 @@ export default class Preload extends Phaser.State {
 		rocket.scale.x = .2;
 		rocket.scale.y = .2;
 		rocket.position.x = centerX;
-		rocket.position.y = centerY;
-		
-		
+		rocket.position.y = centerY;	
 	}
 	
 	update() {
