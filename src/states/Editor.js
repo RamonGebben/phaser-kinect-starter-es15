@@ -124,7 +124,7 @@ export default class Editor extends Phaser.State {
 
 
 		const marker = this.game.add.graphics();
-		marker.lineStyle(2, null, 1);
+		// marker.lineStyle(2, null, 1);
 		marker.drawRect(this.game.world.centerX + 300, 0, 170, 200);
 		marker.drawRect(this.game.world.centerX + 470, 0, 160, 200);
 		marker.drawRect(this.game.world.centerX + 300, 200, 330, 500);

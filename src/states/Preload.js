@@ -10,7 +10,7 @@ export default class Preload extends Phaser.State {
 
 	preload() {
 		this.game.load.image('Rocket', 'assets/rocket.png');
-		this.game.load.image('Space', 'assets/bg.png');
+		this.game.load.image('splash', 'assets/splash.jpg');
 
 		setTimeout(() => {
 			this.state.start('Start');
@@ -31,7 +31,7 @@ export default class Preload extends Phaser.State {
 		let rocket = this.emitter,
 			centerX = this.game.world.centerX,
 			centerY = this.game.world.centerY,
-			space = this.game.add.sprite(0, 0, 'Space');
+			space = this.game.add.sprite(0, 0, 'splash');
 
 		space.height = this.game.height;
 		space.width = this.game.width;
