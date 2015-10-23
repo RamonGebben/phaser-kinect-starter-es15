@@ -14,8 +14,8 @@ export default class Editor extends Phaser.State {
 				image: 'assets/parts/body_1.png'
 			},
 			{
-				title: 'stablizers',
-				type: 'stablizers',
+				title: 'stabilizers',
+				type: 'stabilizers',
 				image: 'assets/parts/stabilizers_1.png'
 			},
 			{
@@ -45,13 +45,36 @@ export default class Editor extends Phaser.State {
 		background.width = this.game.width;
 		background.height = this.game.height;
 
-		this.parts.forEach((part) => {
-			var x = Math.floor(Math.random(2,10)*5);
-			console.log(x);
-			this.game.add.sprite(x*200,x*80, part.title, part.image);
+		this.parts.forEach((part, index) => {
+			switch(part.type) {
+				case 'head':
+					this.game.add.sprite(this.game.world.centerX + 310,10, part.title, part.image);
+					break;
+				case 'body':
+					this.game.add.sprite(this.game.world.centerX + 360, 210, part.title, part.image);
+					break;
+				case 'stabilizers':
+					this.game.add.sprite(this.game.world.centerX + 310, 710, part.title, part.image);
+					break;
+				case 'jet':
+					this.game.add.sprite(this.game.world.centerX + 510, 10, part.title, part.image);
+					break;
+				default :
+					'nothing';
+
+			}
 		});
 
 		this.game.add.sprite(this.game.world.centerX - 200, this.game.world.centerY - 300, 'outline');
+
+		var marker;
+		marker = this.game.add.graphics();
+		marker.lineStyle(2, 0x00FF00, 1);
+		marker.drawRect(this.game.world.centerX + 300, 0, 170, 200);
+		marker.drawRect(this.game.world.centerX + 470, 0, 160, 200);
+		marker.drawRect(this.game.world.centerX + 300, 200, 330, 500);
+		marker.drawRect(this.game.world.centerX + 300, 700, 330, 250);
+
 	}
 
 	update() {
