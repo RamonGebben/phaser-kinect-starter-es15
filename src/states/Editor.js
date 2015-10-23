@@ -31,8 +31,6 @@ export default class Editor extends Phaser.State {
 	}
 
 	preload() {
-
-
 		this.parts.forEach((part) => {
 			console.log(part)
 			this.game.load.image(part.title, part.image);
@@ -47,13 +45,42 @@ export default class Editor extends Phaser.State {
 			console.log( key );
 			let part = this.shizzle.parts[key];
 			part.inputEnabled = true;
-		    part.input.enableDrag();
+			part.events.onInputDown.add(this.onDown, this);
 		});
+	}
+
+	onDown(sprite){
+		let outline = this.shizzle.outline,
+			posX, posY;
+
+		switch (sprite.key) {
+			case 'head':
+				posX = this.world.centerX - 275;
+				posY = outline.position.y + 10;
+				sprite.position.setTo(posX, posY);
+				break;
+			case 'body':
+				posX = this.world.centerX - 316.5;
+				posY = outline.position.y + 95;
+				sprite.position.setTo(posX, posY);
+				break;
+			case 'stabilizers':
+				posX = this.world.centerX - 350;
+				posY = outline.position.y + 390;
+				sprite.position.setTo(posX, posY);
+				break;
+			case 'jet':
+				posX = this.world.centerX - 255;
+				posY = outline.position.y + 580;
+				sprite.position.setTo(posX, posY);
+				break;
+		}
 	}
 
 	create() {
 		//sprites
 		console.log('im on editor');
+		this.game.physics.startSystem(Phaser.Physics.ARCADE);
 		let background = this.game.add.sprite(0,0, 'Space');
 		background.width = this.game.width;
 		background.height = this.game.height;
@@ -76,10 +103,12 @@ export default class Editor extends Phaser.State {
 					'nothing';
 			}
 		});
-		//this.parts.inputEnabled = true;
-		//this.parts.input.enableDrag(false, true);
 
-		this.game.add.sprite(this.game.world.centerX - 200, this.game.world.centerY - 300, 'outline');
+		this.shizzle.outline = this.game.add.sprite(this.world.centerX - 200, this.world.centerY - 300, 'outline');
+		this.shizzle.outline.originalPosition = this.shizzle.outline.position.clone();
+	    this.game.physics.arcade.enable(this.shizzle.outline);
+		this.shizzle.outline.anchor.set(0.5, 0);
+
 
 		var marker;
 		marker = this.game.add.graphics();
@@ -88,6 +117,7 @@ export default class Editor extends Phaser.State {
 		marker.drawRect(this.game.world.centerX + 470, 0, 160, 200);
 		marker.drawRect(this.game.world.centerX + 300, 200, 330, 500);
 		marker.drawRect(this.game.world.centerX + 300, 700, 330, 250);
+
 		this.attachEvents();
 	}
 
