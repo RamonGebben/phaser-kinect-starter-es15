@@ -4,7 +4,7 @@ export default class Editor extends Phaser.State {
 		super();
 		this.parts = [
 			{
-				title: 'Red ball',
+				title: 'head',
 				type: 'head',
 				image: 'assets/parts/head_1.png'
 			},
@@ -24,6 +24,10 @@ export default class Editor extends Phaser.State {
 				image: 'assets/parts/jet_1.png'
 			}
 		]
+
+		this.shizzle = {
+			parts : {}
+		}
 	}
 
 	preload() {
@@ -38,6 +42,15 @@ export default class Editor extends Phaser.State {
 		this.game.load.image('Space', 'assets/bg.png');
 	}
 
+	attachEvents() {
+		Object.keys(this.shizzle.parts).forEach(key => {
+			console.log( key );
+			let part = this.shizzle.parts[key];
+			part.inputEnabled = true;
+		    part.input.enableDrag();
+		});
+	}
+
 	create() {
 		//sprites
 		console.log('im on editor');
@@ -48,20 +61,19 @@ export default class Editor extends Phaser.State {
 		this.parts.forEach((part, index) => {
 			switch(part.type) {
 				case 'head':
-					this.game.add.sprite(this.game.world.centerX + 310,10, part.title, part.image);
+					this.shizzle.parts[ part.title ] = this.game.add.sprite(this.game.world.centerX + 310,10, part.title, part.image);
 					break;
 				case 'body':
-					this.game.add.sprite(this.game.world.centerX + 360, 210, part.title, part.image);
+					this.shizzle.parts[ part.title ] = this.game.add.sprite(this.game.world.centerX + 360, 210, part.title, part.image);
 					break;
 				case 'stabilizers':
-					this.game.add.sprite(this.game.world.centerX + 310, 710, part.title, part.image);
+					this.shizzle.parts[ part.title ] = this.game.add.sprite(this.game.world.centerX + 310, 710, part.title, part.image);
 					break;
 				case 'jet':
-					this.game.add.sprite(this.game.world.centerX + 510, 10, part.title, part.image);
+					this.shizzle.parts[ part.title ] = this.game.add.sprite(this.game.world.centerX + 510, 10, part.title, part.image);
 					break;
 				default :
 					'nothing';
-
 			}
 		});
 		//this.parts.inputEnabled = true;
@@ -76,6 +88,7 @@ export default class Editor extends Phaser.State {
 		marker.drawRect(this.game.world.centerX + 470, 0, 160, 200);
 		marker.drawRect(this.game.world.centerX + 300, 200, 330, 500);
 		marker.drawRect(this.game.world.centerX + 300, 700, 330, 250);
+		this.attachEvents();
 	}
 
 	update() {
