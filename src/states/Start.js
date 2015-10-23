@@ -34,8 +34,8 @@ export default class Start extends Phaser.State {
 	    this.button.onInputOut.add(this.out, this);
 	    this.button.onInputUp.add(this.up, this);
 
-		text = this.game.add.text(this.game.world.centerX - 300, 250, 'Rocket Science', fontStyle);
-		text.anchor.set(0.5);
+		this.text = this.game.add.text(this.game.world.centerX - 300, 250, 'Rocket Science', fontStyle);
+		this.text.anchor.set(0.5);
 	}
 
 	up() {

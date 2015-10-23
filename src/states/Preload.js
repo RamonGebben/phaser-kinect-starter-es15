@@ -44,7 +44,6 @@ export default class Preload extends Phaser.State {
 		rocket.position.x = centerX;
 		rocket.position.y = centerY;
 
-
 	}
 
 	update() {
