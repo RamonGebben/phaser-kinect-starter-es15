@@ -27,7 +27,7 @@ export default class Editor extends Phaser.State {
 	}
 
 	preload() {
-		this.parts.forEach(function(part){
+		this.parts.forEach((part) => {
 			this.game.load.image(part.title, part.image );
 		});
 		this.game.load.image('Space', 'assets/bg.png');
