@@ -1,7 +1,8 @@
-export default class End extends Phaser.State {
+export default class Base extends Phaser.State {
 
 	constructor() {
 		super();
+		this._bindSocket();
 	}
 
 	preload() {
